@@ -27,47 +27,26 @@ fn main() {
 }
 
 fn handle_selection(str: String) -> String {
-    // match str.chars().nth(0).unwrap().is_numeric() {
-        // true => handle_snaps(),
-        // false => handle_sentence(),
-    // }
-    let word: String = match str.as_str() {
-        "sentence" => handle_sentence(),
-        "snaps" => handle_snaps(),
-        _ => String::new(),
-    };
-    return word;
+    match str.chars().nth(0).unwrap().is_numeric() {
+        true => handle_snaps(str),
+        false => handle_sentence(str),
+    }
+    // let word: String = match str.as_str() {
+    //     "sentence" => handle_sentence(),
+    //     "snaps" => handle_snaps(),
+    //     _ => String::new(),
+    // };
+    // return word;
 }
 
-fn handle_sentence() -> String {
-    println!("Please enter the sentence:");
-    let mut sentence = String::new();
-
-    io::stdin()
-        .read_line(&mut sentence)
-        .expect("Failed");
-
-    let res: String = match sentence.trim().parse() {
-        Ok(str) => str,
-        Err(_) => return String::new(),
-    };
-
-    let letter = res.as_str().chars().nth(0).unwrap();
-
+fn handle_sentence(str: String) -> String {
+    let letter = str.chars().nth(0).unwrap();
     return letter.to_string();
 }
 
-fn handle_snaps() -> String {
-    println!("Please enter how many snaps:");
+fn handle_snaps(str: String) -> String {
     let vowels = ["a", "e", "i", "o", "u"];
-
-    let mut index = String::new();
-
-    io::stdin()
-        .read_line(&mut index)
-        .expect("Failed");
-
-    let i: usize = match index.trim().parse() {
+    let i: usize = match str.trim().parse() {
         Ok(num) => num,
         Err(_) => return String::new(),
     };
