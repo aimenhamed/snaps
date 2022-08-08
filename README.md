@@ -1,0 +1,3 @@
+# snaps
+
+- Snaps game solver
