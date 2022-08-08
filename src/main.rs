@@ -31,12 +31,6 @@ fn handle_selection(str: String) -> String {
         true => handle_snaps(str),
         false => handle_sentence(str),
     }
-    // let word: String = match str.as_str() {
-    //     "sentence" => handle_sentence(),
-    //     "snaps" => handle_snaps(),
-    //     _ => String::new(),
-    // };
-    // return word;
 }
 
 fn handle_sentence(str: String) -> String {
